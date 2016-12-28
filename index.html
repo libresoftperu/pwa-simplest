@@ -14,5 +14,23 @@
 </head>
 <body>
   <h1>PWA Simplest</h1>
+
+  <div id="time"></div>
+
+  <script>
+    document.getElementById('time').innerHTML = new Date();
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js', {
+        scope: './'
+      }).then(function() {
+        console.log('CLIENT: service worker registration complete.');
+      }, function() {
+        console.log('CLIENT: service worker registration failure.');
+      });
+    } else {
+      console.log('CLIENT: service worker is not supported.');
+    }
+  </script>
 </body>
 </html>
